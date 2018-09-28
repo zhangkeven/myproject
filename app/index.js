@@ -4,6 +4,7 @@ import {NavigationActions, StyleSheet, Touch, View} from 'react-native';
 import {getHeaderHeight, getHeaderPadding} from "./utils/util";
 import HomeIndex from './pages/HomeIndex';
 import  Choose from  './pages/choose';
+import Login from './pages/login/login';
 import {StackNavigator} from 'react-navigation';
 import {fromBottomLikeAndroid} from "./utils/NavigationUtil";
 const styles = StyleSheet.create({
@@ -13,8 +14,8 @@ const styles = StyleSheet.create({
         marginBottom: 2,
     }
 });
-
 const Navigator = StackNavigator({
+    Login:{screen:Login},
     Index: {screen: HomeIndex},
     Choose:{screen: Choose}
 }, {

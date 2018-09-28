@@ -1,8 +1,13 @@
 import {observable,action} from 'mobx'
 import FetchUtil from "../service/rpc";
+import Toast from "react-native-simple-toast";
 let index = 0
 
 class ObservableListStore {
+    @observable
+    uName='';
+    @observable
+    UpWd='';
     @observable
     name='';
     @observable
@@ -40,6 +45,14 @@ class ObservableListStore {
         }
     }
     @action
+    updateUName=(name)=>{
+        this.uName=name;
+    }
+    @action
+    updateUpWd=(text)=>{
+        this.UpWd=text;
+    }
+    @action
     updateName=(name)=>{
         this.name=name;
     }
@@ -57,7 +70,9 @@ class ObservableListStore {
         FetchUtil.post('http://49.75.36.235:9001/api/management/role/list',data).then(res=>{
             console.log(res);
             this.name=res.data.result[0].roleName;
-        })
+        }).catch((error)=>{
+            console.warn(error);
+        });
     }
 }
 
